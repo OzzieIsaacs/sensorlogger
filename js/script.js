@@ -754,7 +754,7 @@
 							var xaxis = item.createdAt;
 							var ydata = item.data[i];
 
-							if (ydata && ydata.value) {
+							if (ydata && 'value' in ydata) {
 								ydata = ydata.value;
 								dataLines[i].push([xaxis, parseFloat(ydata)])
 							}
@@ -828,7 +828,7 @@
 
 			drawableLines = [];
 			if(dataLines.length < 1) {
-				$.each(data, function (index, item) {
+				$.each(data.logs, function (index, item) {
 					line1.push([item.createdAt, parseFloat(item.temperature)])
 					line2.push([item.createdAt, parseFloat(item.humidity)])
 				});
